@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMB SATECI - Logo Animado V2</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            text-align: left;
+            position: relative;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: containerAppear 1.2s ease-out 0.3s forwards;
+        }
+
+        .rmb-text {
+            font-size: 100px;
+            font-weight: 900;
+            color: #1e3a5f;
+            letter-spacing: 4px;
+            margin-bottom: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .rmb-letter {
+            display: inline-block;
+            transform: translateY(100px);
+            animation: letterDrop 0.8s ease-out forwards;
+        }
+
+        .rmb-letter:nth-child(1) { animation-delay: 0.8s; }
+        .rmb-letter:nth-child(2) { animation-delay: 1.0s; }
+        .rmb-letter:nth-child(3) { animation-delay: 1.2s; }
+
+        .sateci-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .sateci-bar {
+            background: linear-gradient(135deg, #ff8c00, #ffa500);
+            padding: 12px 28px;
+            border-radius: 8px;
+            position: relative;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: barExpand 0.6s ease-out 2.2s forwards;
+        }
+
+        .sateci-text {
+            font-size: 36px;
+            font-weight: 900;
+            color: #1e3a5f;
+            letter-spacing: 6px;
+            opacity: 0;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            -webkit-text-stroke: 0.5px #1e3a5f;
+            animation: textFadeIn 0.4s ease-out 2.6s forwards;
+        }
+
+        .geometric-bg {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+            border-radius: 50%;
+            z-index: -1;
+            animation: bgRotate 20s linear infinite;
+        }
+
+        .geometric-bg::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: #ffa500;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .accent-line {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff8c00, #ffa500);
+            border-radius: 2px;
+            animation: lineGrow 0.8s ease-out 3s forwards;
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .float-element {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ffa500;
+            border-radius: 2px;
+            opacity: 0;
+            animation: elementFloat 4s ease-in-out infinite;
+        }
+
+        .float-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 3.5s;
+        }
+
+        .float-element:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            animation-delay: 4s;
+            animation-duration: 5s;
+        }
+
+        .float-element:nth-child(3) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 4.5s;
+            animation-duration: 3.5s;
+        }
+
+        @keyframes containerAppear {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes letterDrop {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes barExpand {
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes textFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bgRotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes lineGrow {
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes elementFloat {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Efecto hover */
+        .logo-container:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.2);
+        }
+
+        .logo-container:hover .rmb-text {
+            color: #2a5490;
+            transition: color 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                padding: 30px 20px;
+            }
+            .rmb-text {
+                font-size: 70px;
+                letter-spacing: 2px;
+            }
+            .sateci-text {
+                font-size: 24px;
+                letter-spacing: 3px;
+                text-align: center;
+                -webkit-text-stroke: 0.3px #1e3a5f;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="geometric-bg"></div>
+    <div class="logo-container">
+        <div class="floating-elements">
+            <div class="float-element"></div>
+            <div class="float-element"></div>
+            <div class="float-element"></div>
+        </div>
+        <div class="rmb-text">
+            <span class="rmb-letter">R</span><span class="rmb-letter">M</span><span class="rmb-letter">B</span>
+        </div>
+        <div class="sateci-container">
+            <div class="sateci-bar">
+                <div class="sateci-text">SATECI</div>
+            </div>
+        </div>
+        <div class="accent-line"></div>
+    </div>
+
+    <script>
+        // Agregar efecto de click
+        document.querySelector('.logo-container').addEventListener('click', function() {
+            this.style.animation = 'none';
+            this.offsetHeight; // Trigger reflow
+            this.style.animation = 'containerAppear 0.6s ease-out';
+            
+            // Reiniciar animaciones de letras
+            const letters = document.querySelectorAll('.rmb-letter');
+            letters.forEach((letter, index) => {
+                letter.style.animation = 'none';
+                letter.offsetHeight; // Trigger reflow
+                letter.style.animation = `letterDrop 0.4s ease-out ${0.1 * index}s forwards`;
+            });
+        });
+
+        // Efecto de parallax sutil en el mouse
+        document.addEventListener('mousemove', (e) => {
+            const container = document.querySelector('.logo-container');
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const moveX = x * 0.01;
+            const moveY = y * 0.01;
+            
+            container.style.transform += ` translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
+</body>
+</html>
